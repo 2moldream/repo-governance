@@ -1,6 +1,6 @@
 ---
 name: repo-governance
-description: Explicit-only skill for initializing repository governance or diagnosing a legacy repository before normalization; invoke as $repo-governance only when the user explicitly asks for governance setup or governance-adaptation analysis. Never load it for ordinary development tasks.
+description: Explicit-only skill that turns Codex into a safe long-term repository collaborator; use $repo-governance only for governance bootstrap or legacy-repository diagnosis, with shared workorder IDs, scoped branches, verified acceptance, anti-drift docs, configuration governance, and shit-mountain ratchets. Never load it for ordinary development tasks.
 ---
 
 # 仓库治理适配
@@ -14,7 +14,7 @@ description: Explicit-only skill for initializing repository governance or diagn
 3. 仓库已有开发约束时，读取 [diagnose.md](references/diagnose.md)，输出诊断报告并等待用户确认；不得直接覆盖或合并现有规则。
 4. 仓库没有显式约束且用户要求初始化治理时，读取 [bootstrap.md](references/bootstrap.md)。空仓库或新项目在轻量盘点后直接创建 L1；无约束的已有仓库先做轻量盘点，再只创建 L1 文件。
 5. 保留仓库专属约定。除安全底线外，冲突默认按目标仓库显式规则裁决。
-6. 涉及配置、模块边界、依赖方向、外部调用、状态机、巨石入口或兼容层时，读取 [code-governance.md](references/code-governance.md)。
+6. 涉及配置、模块边界、依赖方向、外部调用、状态机、屎山入口或兼容层时，读取 [code-governance.md](references/code-governance.md)。
 7. 涉及 WO 执行体、开发子任务、worker 可见性、fallback 或执行收口时，读取 [collaboration-governance.md](references/collaboration-governance.md)；目标仓库显式政策优先，无政策时主会话串行。
 8. 需要重大决策圆桌、根因圆桌或交叉评审时，读取 [roundtable-protocol.md](references/roundtable-protocol.md)；Round 1 独立评审和 Round 2 交叉互评必做，结束后归档可见分析会话。
 9. L1 初始化后如需发号，使用 [workorder-registry.md](references/workorder-registry.md) 和 bundled CLI；主会话统一发号，worker 不得改 registry。
@@ -29,7 +29,7 @@ description: Explicit-only skill for initializing repository governance or diagn
 3. 不得静默启用多 worker、多 worktree、发布门禁或文档地图治理。
 4. 默认只启用 L1：先方案后开发、根因先行、工单范围、一工单一分支、配置与架构影响、验收命令和 fail-closed 汇报。
 5. L2 多 worker、L3 多 worktree / 长期分支治理、L4 文档与发布治理保留设计但默认不启动。
-6. 巨石 ratchet 和结构自动门禁默认不启动；必须先建立目标仓库基线并单独确认。
+6. 屎山 ratchet 和结构自动门禁默认不启动；必须先建立目标仓库基线并单独确认。
 7. 不把 independent worker 登记为 native child；不用后台进程、普通命令输出或主持人自答冒充模型执行体。
 8. 未记录命令结果不得声称完成；缺证据保持开放或需确认。
 

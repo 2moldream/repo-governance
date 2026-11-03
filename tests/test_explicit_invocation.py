@@ -15,10 +15,11 @@ class ExplicitInvocationTests(unittest.TestCase):
         description = (ROOT / "SKILL.md").read_text(encoding="utf-8")
         self.assertIn("Explicit-only", description)
         self.assertIn("ordinary development tasks", description)
-        self.assertIn("legacy repository", description)
+        self.assertIn("legacy-repository diagnosis", description)
+        self.assertIn("shit-mountain ratchets", description)
 
     def test_version_records_policy_change(self):
-        self.assertEqual((ROOT / "VERSION").read_text(encoding="utf-8").strip(), "0.3.0")
+        self.assertEqual((ROOT / "VERSION").read_text(encoding="utf-8").strip(), "0.4.0")
 
 
 if __name__ == "__main__":

@@ -12,10 +12,10 @@ class CodeGovernanceTests(unittest.TestCase):
         self.assertIn("code-governance.md", skill)
         self.assertIn("配置、模块边界、依赖方向", skill)
         self.assertIn("配置与架构影响", skill)
-        self.assertIn("巨石 ratchet", skill)
+        self.assertIn("屎山 ratchet", skill)
         self.assertIn("配置治理", reference)
         self.assertIn("架构与依赖治理", reference)
-        self.assertIn("巨石代码治理", reference)
+        self.assertIn("屎山代码治理", reference)
 
     def test_configuration_has_single_source_priority_and_safe_defaults(self):
         text = (ROOT / "references/code-governance.md").read_text(encoding="utf-8")
@@ -48,9 +48,9 @@ class CodeGovernanceTests(unittest.TestCase):
     def test_monolith_uses_baseline_and_double_ratchet(self):
         text = (ROOT / "references/code-governance.md").read_text(encoding="utf-8")
         for needle in (
-            "巨石风险",
+            "屎山风险",
             "不可变基线",
-            "单个巨石对象规模或复杂度不得上升",
+            "单个屎山对象规模或复杂度不得上升",
             "聚合规模不得上升",
             "一个缩小、另一个膨胀",
             "禁止继续新增业务逻辑",
@@ -78,7 +78,7 @@ class CodeGovernanceTests(unittest.TestCase):
         worker_prompt = (ROOT / "assets/templates/worker-prompt.template.md").read_text(encoding="utf-8")
         self.assertIn("配置治理", agents)
         self.assertIn("架构与代码结构", agents)
-        self.assertIn("巨石内禁止新增业务逻辑", agents)
+        self.assertIn("屎山内禁止新增业务逻辑", agents)
         self.assertIn("架构影响：", workorder)
         self.assertIn("配置影响：", workorder)
         self.assertIn("{{architecture_boundary}}", worker_prompt)
@@ -91,10 +91,10 @@ class CodeGovernanceTests(unittest.TestCase):
         for needle in (
             "配置治理",
             "代码结构",
-            "巨石风险",
+            "屎山风险",
             "配置唯一事实源",
             "架构分层",
-            "巨石识别",
+            "屎山识别",
             "兼容层",
         ):
             self.assertIn(needle, text)
@@ -119,7 +119,7 @@ class CodeGovernanceTests(unittest.TestCase):
                 self.assertNotIn(forbidden, text, f"{path.name} contains {forbidden}")
 
     def test_version_is_bumped_for_skill_behavior_change(self):
-        self.assertEqual((ROOT / "VERSION").read_text(encoding="utf-8").strip(), "0.3.0")
+        self.assertEqual((ROOT / "VERSION").read_text(encoding="utf-8").strip(), "0.4.0")
 
 
 if __name__ == "__main__":

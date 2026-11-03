@@ -1,7 +1,7 @@
 interface:
   display_name: "Repo Governance"
-  short_description: "Initialize or diagnose repository governance"
-  default_prompt: "使用 $repo-governance 诊断当前历史仓库的治理规范并输出适配方案。"
+  short_description: "Stop chaotic AI repo changes and shit mountains"
+  default_prompt: "使用 $repo-governance 诊断当前仓库治理并输出适配方案。"
 
 policy:
   allow_implicit_invocation: false

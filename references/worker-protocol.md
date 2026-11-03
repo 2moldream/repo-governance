@@ -51,7 +51,7 @@ base commit 或 base branch
 
 使用 [worker-prompt.template.md](../assets/templates/worker-prompt.template.md) 生成，未填字段不得分发给 worker。
 
-Worker 输出必须包含架构影响、配置影响、是否触及巨石或兼容层，以及对应证据；不得只写“无影响”。
+Worker 输出必须包含架构影响、配置影响、是否触及屎山或兼容层，以及对应证据；不得只写“无影响”。
 
 ## 4. Worker 禁止事项
 
