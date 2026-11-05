@@ -16,6 +16,7 @@ class ReadmeValuePropositionTests(unittest.TestCase):
             "验收靠嘴说",
             "目标写成现状",
             "旧实现一直删不掉",
+            "一个模型的意见就直接定了",
         ):
             self.assertIn(needle, text)
         self.assertIn("目标仓库规则优先", text)
@@ -37,6 +38,8 @@ class ReadmeValuePropositionTests(unittest.TestCase):
             "Claude 子代理不转 worker 兜底",
             "完成通知和入仓报告",
             "整批按最高验收等级复跑",
+            "独立分析（Round 1），再互相挑错（Round 2）",
+            "吵不出一致就用保守方案",
             "删除条件和承接工单",
             "评审提交先于实现提交",
         ):
