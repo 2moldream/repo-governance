@@ -1,6 +1,6 @@
 ---
 name: repo-governance
-description: Explicit-only skill that turns Codex and Claude into safe long-term repository collaborators; use $repo-governance only for governance bootstrap or legacy-repository diagnosis, with shared workorder IDs, scoped branches, verified acceptance, anti-drift docs, configuration governance, and shit-mountain ratchets. Never load it for ordinary development tasks.
+description: Explicit-only repository governance for Codex and Claude. Invoke $repo-governance only for governance bootstrap or legacy-repository diagnosis; never load it for ordinary development tasks. Covers shared workorder IDs, scoped branches, verified acceptance, design and evidence boundaries, and shit-mountain ratchets.
 ---
 
 # 仓库治理适配
