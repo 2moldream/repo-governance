@@ -119,7 +119,7 @@ class CodeGovernanceTests(unittest.TestCase):
                 self.assertNotIn(forbidden, text, f"{path.name} contains {forbidden}")
 
     def test_version_is_bumped_for_skill_behavior_change(self):
-        self.assertEqual((ROOT / "VERSION").read_text(encoding="utf-8").strip(), "0.4.0")
+        self.assertEqual((ROOT / "VERSION").read_text(encoding="utf-8").strip(), "0.5.0")
 
 
 if __name__ == "__main__":

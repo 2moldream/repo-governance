@@ -97,8 +97,13 @@ L1 默认启用：
 12. 工单架构影响与配置影响声明。
 13. 关键治理文档变更前置评审。
 14. 默认主会话串行执行，不启动 worker、子智能体或圆桌。
+15. 验收等级声明（默认 L1），以及发现行为漂移后的自动升级。
+16. 详设影响声明，高风险路径不得声明无影响。
+17. 证据目录边界，预期结果只用于验收对照。
+18. 多工单并行义务（默认串行 + 义务条款）：队列盘点、触发条件重估和主会话收口，不等于默认启动并行 worker。
 
 详细规则见 [code-governance.md](code-governance.md)。
+分级验收见 [acceptance-governance.md](acceptance-governance.md)；详设与接口地图见 [design-governance.md](design-governance.md)；证据目录边界见 [evidence-governance.md](evidence-governance.md)。
 执行体选择、fallback 和收口见 [collaboration-governance.md](collaboration-governance.md)；圆桌触发与归档见 [roundtable-protocol.md](roundtable-protocol.md)。
 
 以下能力保留设计但默认不启动：
@@ -108,6 +113,8 @@ L1 默认启用：
 3. L4 文档地图、代码地图、发布证据链和自动治理门禁。
 4. 屎山规模 ratchet 与结构自动门禁；启用前必须先建立目标仓库基线。
 5. 独立执行体和自动圆桌；必须先获得用户确认并配置模型、输出位置和归档方式。
+6. design-delta 自动台账工具；声明与人工 append-only 记录属于 L1，自动写入和校验工具需单独启用。
+7. 接口地图自动检查；生成视图、stale、外键和 finding 自动检查需单独启用。
 
 启用任一层必须先单独诊断、设计并获得用户确认。
 

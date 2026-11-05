@@ -14,6 +14,36 @@ class CollaborationGovernanceTests(unittest.TestCase):
         self.assertIn("invisible-executor", text)
         self.assertIn("visible-subagent", text)
         self.assertIn("independent-worker", text)
+        self.assertIn("claude-subagent", text)
+
+    def test_claude_subagent_records_real_identity_and_has_no_fallback(self):
+        text = (ROOT / "references/collaboration-governance.md").read_text(encoding="utf-8")
+        for needle in (
+            "宿主平台子代理工具",
+            "真实 task id",
+            "实际模型",
+            "prompt 摘要",
+            "输出文件",
+            "worktree",
+            "allowed scope",
+            "Claude 路径无 fallback",
+            "不得降级为 independent worker",
+            "不得静默替换执行体类型",
+        ):
+            self.assertIn(needle, text)
+
+    def test_claude_subagent_close_method_requires_dual_evidence(self):
+        text = (ROOT / "references/collaboration-governance.md").read_text(encoding="utf-8")
+        workorder = (ROOT / "assets/templates/WO.template.md").read_text(encoding="utf-8")
+        for needle in (
+            "close_method",
+            "双证据",
+            "宿主平台完成通知",
+            "实施报告已入仓",
+            "两者缺一不得关闭",
+        ):
+            self.assertIn(needle, text)
+        self.assertIn("close_method：{{closure_method}}", workorder)
 
     def test_executor_identity_and_fallback_need_evidence(self):
         text = (ROOT / "references/collaboration-governance.md").read_text(encoding="utf-8")
@@ -65,6 +95,18 @@ class CollaborationGovernanceTests(unittest.TestCase):
             "fail-closed",
             "归档本次创建的全部可见子智能体或 worker",
             "归档失败时保留 ID",
+        ):
+            self.assertIn(needle, text)
+
+    def test_subagent_roundtable_requires_independent_committed_reports(self):
+        text = (ROOT / "references/roundtable-protocol.md").read_text(encoding="utf-8")
+        for needle in (
+            "至少 2 个子代理，推荐 4 个",
+            "跨模型独立分析",
+            "Round 1 独立分析与 Round 2 交叉互评语义不变",
+            "每个子代理必须生成独立报告文件",
+            "报告入仓",
+            "缺任一报告时保持开放",
         ):
             self.assertIn(needle, text)
 

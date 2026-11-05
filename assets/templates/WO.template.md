@@ -20,6 +20,15 @@
 {{behavior_change_or_explicit_zero_change}}
 ```
 
+## 验收与设计证据声明
+
+```text
+验收等级：{{acceptance_tier}}
+详设影响：{{yes_or_no_with_reason}}
+design_delta_ref：{{ref_or_not_applicable}}
+证据清单：{{evidence_manifest}}
+```
+
 ## 文档影响
 
 ```text
@@ -58,6 +67,7 @@ subagent_start_status：{{started_failed_or_not_applicable}}
 执行状态：{{running_completed_failed_interrupted}}
 输出位置：{{output_location}}
 收口证据：{{closure_or_archive_evidence}}
+close_method：{{closure_method}}
 ```
 
 ## 实施要求

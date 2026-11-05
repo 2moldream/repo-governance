@@ -1,6 +1,6 @@
 ---
 name: repo-governance
-description: Explicit-only skill that turns Codex into a safe long-term repository collaborator; use $repo-governance only for governance bootstrap or legacy-repository diagnosis, with shared workorder IDs, scoped branches, verified acceptance, anti-drift docs, configuration governance, and shit-mountain ratchets. Never load it for ordinary development tasks.
+description: Explicit-only skill that turns Codex and Claude into safe long-term repository collaborators; use $repo-governance only for governance bootstrap or legacy-repository diagnosis, with shared workorder IDs, scoped branches, verified acceptance, anti-drift docs, configuration governance, and shit-mountain ratchets. Never load it for ordinary development tasks.
 ---
 
 # 仓库治理适配
@@ -21,6 +21,9 @@ description: Explicit-only skill that turns Codex into a safe long-term reposito
 10. 用户明确要求多 worker 并行时，先读取 [worker-protocol.md](references/worker-protocol.md)；L2 默认关闭，范围重叠任务必须串行。
 11. 用户明确要求多 worktree 或长期分支治理时，读取 [worktree-protocol.md](references/worktree-protocol.md) 和 [merge-protocol.md](references/merge-protocol.md)；L3 默认关闭，合并前必须 fail-closed 检查。
 12. 用户明确要求文档事实源、发布证据链或长期文档治理时，读取 [document-governance.md](references/document-governance.md)；L4 默认关闭，不自动创建 Heavy 门禁。
+13. 涉及验收等级、分级验收、行为漂移或关键路径验收时，读取 [acceptance-governance.md](references/acceptance-governance.md)；验收等级 L0/L1/L2 与能力分层 L1-L4 不得混用。
+14. 涉及详设影响、design-delta、服务接口地图或设计章节变更时，读取 [design-governance.md](references/design-governance.md)。
+15. 涉及数据、证据、输入语料、预期结果或运行产物时，读取 [evidence-governance.md](references/evidence-governance.md)；预期结果只用于验收对照。
 
 ## 硬边界
 
@@ -32,6 +35,8 @@ description: Explicit-only skill that turns Codex into a safe long-term reposito
 6. 屎山 ratchet 和结构自动门禁默认不启动；必须先建立目标仓库基线并单独确认。
 7. 不把 independent worker 登记为 native child；不用后台进程、普通命令输出或主持人自答冒充模型执行体。
 8. 未记录命令结果不得声称完成；缺证据保持开放或需确认。
+9. 验收等级不得只改字段冒充已验收；发现行为漂移必须按分级验收规则升级并补证。
+10. 预期结果不得进入生产输入或提示词；输入语料、预期结果和运行产物不得混用，历史运行产物不得充当新证据或基线。
 
 ## 输出契约
 

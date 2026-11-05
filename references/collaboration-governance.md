@@ -17,6 +17,7 @@
 | `invisible-executor` | 主持人会话内置不可见子代理或用户确认的等价受控执行器 | 目标仓库要求 WO 执行体不可见 |
 | `visible-subagent` | 客户端原生 visible child | 目标仓库明确允许或首选可见子智能体 |
 | `independent-worker` | 独立 worker 会话 | 目标仓库允许，或作为真实 child 启动失败后的一次性兜底 |
+| `claude-subagent` | 由宿主平台子代理工具启动的后台子代理 | 目标仓库政策允许该执行体，且宿主平台提供真实子代理工具 |
 
 ## 2. 启动前检查
 
@@ -59,10 +60,14 @@ ended_at：
 3. `invisible-executor` 必须是主持人内置不可见子代理或用户确认的等价受控执行器。
 4. `subagent_start_status=started` 必须有真实启动响应或平台元数据。
 5. 模型、任务边界、输出位置不得由主会话推测代填。
+6. `claude-subagent` 只能由宿主平台子代理工具真实启动，`launch_method` 记录实际工具方式；必须登记真实 task id、实际模型、prompt 摘要、输出文件、worktree 和 allowed scope。
+7. `claude-subagent` 的真实 task id 是关闭与报告核对的身份依据，不得用自造名称、会话标题或主会话推断替代。
 
-## 4. 一次性兜底
+## 4. 一次性兜底与无 fallback 路径
 
 只有目标政策允许、且真实 child 启动失败时，才允许从 child 降级为 independent worker。
+
+**Claude 路径无 fallback：** 一旦工单选择 `claude-subagent`，不得降级为 independent worker、可见 child、普通命令、后台进程或主会话代执行。子代理工具不可用、启动失败、执行失败或中断时，保持 `failed` / `interrupted`，登记证据并停止或返回分发方重新裁决；不得静默替换执行体。
 
 必须记录：
 
@@ -104,6 +109,9 @@ running / completed / failed / interrupted
 5. 未完成项。
 6. 文档逻辑归档声明。
 7. 关闭、归档或终止执行体的证据。
+8. `close_method`：实际关闭方式及对应证据位置。
+
+`close_method` 描述如何证明执行体已经收口，不是把状态字段改为 `completed`。`claude-subagent` 的关闭证据必须是双证据：宿主平台完成通知，以及实施报告已入仓的可追溯文件与提交记录；两者缺一不得关闭。完成通知必须能关联真实 task id，入仓报告必须包含该执行体自己的验收结果。
 
 收口证据包括平台响应、会话状态、最终消息、归档响应或目标仓库要求的等价记录。归档或关闭失败必须登记待确认事项，不得伪造成功。
 

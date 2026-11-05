@@ -25,6 +25,26 @@ class L3ProtocolTests(unittest.TestCase):
         self.assertIn("fail-closed", text)
         self.assertIn("依赖 WO", text)
 
+    def test_merge_batch_window_revalidates_at_highest_tier(self):
+        text = (ROOT / "references/merge-protocol.md").read_text(encoding="utf-8")
+        for needle in (
+            "合并攒批窗口",
+            "同族工单必须串行合并",
+            "异族工单只有允许修改文件不重叠",
+            "事实源、配置、生成视图和行为语义均无冲突",
+            "每批按其中最高验收等级复跑验收",
+            "出现冲突、非预期漂移",
+            "立即停止攒批",
+            "重新执行整批复验",
+        ):
+            self.assertIn(needle, text)
+
+    def test_stable_main_records_baseline_and_rollback_point(self):
+        text = (ROOT / "references/merge-protocol.md").read_text(encoding="utf-8")
+        self.assertIn("stable main 禁止 force push", text)
+        self.assertIn("当前 baseline commit", text)
+        self.assertIn("可执行回滚点", text)
+
     def test_merge_conflict_preserves_workspace(self):
         text = (ROOT / "references/merge-protocol.md").read_text(encoding="utf-8")
         self.assertIn("保留冲突现场", text)

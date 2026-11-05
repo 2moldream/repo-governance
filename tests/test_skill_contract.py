@@ -43,6 +43,40 @@ class SkillContractTests(unittest.TestCase):
         ):
             self.assertIn(needle, text)
 
+    def test_skill_routes_acceptance_design_and_evidence_governance(self):
+        text = (ROOT / "SKILL.md").read_text(encoding="utf-8")
+        for needle in (
+            "acceptance-governance.md",
+            "验收等级、分级验收、行为漂移或关键路径验收",
+            "design-governance.md",
+            "详设影响、design-delta、服务接口地图",
+            "evidence-governance.md",
+            "数据、证据、输入语料、预期结果或运行产物",
+            "验收等级不得只改字段冒充已验收",
+            "预期结果不得进入生产输入或提示词",
+        ):
+            self.assertIn(needle, text)
+
+    def test_diagnosis_covers_all_twenty_six_governance_capabilities(self):
+        text = (ROOT / "references/diagnose.md").read_text(encoding="utf-8")
+        start = text.index("需比较的内置能力：")
+        end = text.index("## 3. 证据契约")
+        numbered = [line for line in text[start:end].splitlines() if line[:1].isdigit()]
+        self.assertEqual(len(numbered), 26)
+        for needle in (
+            "验收分级政策",
+            "design-delta 台账",
+            "服务接口地图",
+            "数据目录边界",
+            "验收分级与漂移升级",
+            "详设影响与设计增量台账",
+            "数据与证据目录边界",
+            "多工单并行义务",
+            "合并攒批窗口",
+            "子代理圆桌",
+        ):
+            self.assertIn(needle, text)
+
     def test_skill_output_does_not_include_source_domain_defaults(self):
         paths = [ROOT / "SKILL.md", *(
             ROOT / "references").glob("*.md"), *(

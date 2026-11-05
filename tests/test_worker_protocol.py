@@ -36,6 +36,28 @@ class WorkerProtocolTests(unittest.TestCase):
         ):
             self.assertIn(needle, text)
 
+    def test_parallel_work_is_an_obligation_without_enabling_parallel_by_default(self):
+        text = (ROOT / "references/worker-protocol.md").read_text(encoding="utf-8")
+        bootstrap = (ROOT / "references/bootstrap.md").read_text(encoding="utf-8")
+        for needle in (
+            "多工单并行开发义务",
+            "效果优先于并行效率",
+            "判定核心、证据链、发布路径上的工单该串行就串行",
+            "文件面交叠",
+            "队列不空转",
+            "队列空 + 阻塞原因",
+            "触发条件自动重估",
+            "条件已经满足而无人回头检查，视同治理违规",
+            "子代理执行与主会话让位",
+            "主会话负责范围裁决、发号、监控、证据核对和收口",
+            "并行开发、串行合并",
+            "热点文件同一时间只允许一个写入方",
+            "在途工单上限",
+        ):
+            self.assertIn(needle, text)
+        self.assertIn("并行义务不等于默认并行执行", text)
+        self.assertIn("多工单并行义务（默认串行 + 义务条款）", bootstrap)
+
     def test_protocol_requires_real_model_executors(self):
         text = (ROOT / "references/worker-protocol.md").read_text(encoding="utf-8")
         self.assertIn("真实模型执行体", text)

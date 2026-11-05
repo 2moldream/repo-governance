@@ -21,6 +21,20 @@ class L1TemplateTests(unittest.TestCase):
         ):
             self.assertIn(needle, text)
 
+    def test_agents_template_contains_new_l1_governance_rules(self):
+        text = (TEMPLATES / "AGENTS.template.md").read_text(encoding="utf-8")
+        for needle in (
+            "## 8. 验收分级",
+            "## 9. 证据目录边界",
+            "## 10. 并行义务",
+            "验收等级与能力分层 L1-L4 同名不同义",
+            "预期结果只用于验收对照",
+            "队列空 + 阻塞原因",
+            "design-delta 自动台账工具",
+            "接口地图自动检查",
+        ):
+            self.assertIn(needle, text)
+
     def test_docs_template_declares_fact_sources_and_lifecycle(self):
         text = (TEMPLATES / "docs-README.template.md").read_text(encoding="utf-8")
         self.assertIn("事实源", text)
@@ -41,6 +55,11 @@ class L1TemplateTests(unittest.TestCase):
             "发现",
             "实施与验收记录",
             "回退方案",
+            "验收等级：{{acceptance_tier}}",
+            "详设影响：{{yes_or_no_with_reason}}",
+            "design_delta_ref：{{ref_or_not_applicable}}",
+            "证据清单：{{evidence_manifest}}",
+            "close_method：{{closure_method}}",
         ):
             self.assertIn(needle, text)
 
