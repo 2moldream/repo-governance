@@ -16,6 +16,20 @@ class L3ProtocolTests(unittest.TestCase):
         self.assertIn("脏文件", text)
         self.assertIn("不得使用强制删除", text)
 
+    def test_shared_workspace_protection_is_unconditional(self):
+        text = (ROOT / "references/worktree-protocol.md").read_text(encoding="utf-8")
+        for needle in (
+            "共享工作区保护",
+            "不受 L3 开关限制",
+            "共享基线",
+            "零操作",
+            "未跟踪文件",
+            "只登记报告",
+            "integration worktree",
+            "不得借主会话、子代理、worker 或任何工具间接绕过",
+        ):
+            self.assertIn(needle, text)
+
     def test_merge_protocol_fails_closed_before_merge(self):
         text = (ROOT / "references/merge-protocol.md").read_text(encoding="utf-8")
         self.assertIn("worker 不得合并", text)

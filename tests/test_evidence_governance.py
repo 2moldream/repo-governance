@@ -61,5 +61,18 @@ class EvidenceGovernanceTests(unittest.TestCase):
         self.assertIn("禁止把历史 outputs 作为输入、验收证据或新基线", agents)
 
 
+    def test_frozen_evidence_must_live_inside_repository(self):
+        text = (ROOT / "references/evidence-governance.md").read_text(encoding="utf-8")
+        for needle in (
+            "冻结证据入仓",
+            "tests/fixtures/",
+            "仓外易失路径",
+            "个人目录、临时目录、挂载卷、会话工作区",
+            "记录来源、迁移时间和内容校验值",
+            "不接受验收时顺手替换",
+        ):
+            self.assertIn(needle, text)
+
+
 if __name__ == "__main__":
     unittest.main()

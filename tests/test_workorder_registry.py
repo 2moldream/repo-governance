@@ -166,5 +166,14 @@ class WorkorderRegistryTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
 
 
+    def test_registry_reference_documents_allocator_worktree_binding(self):
+        text = (ROOT / "references/workorder-registry.md").read_text(encoding="utf-8")
+        self.assertIn("发号器绑定目标 worktree", text)
+        self.assertIn("目标 worktree 根运行", text)
+        self.assertIn("受保护的共享工作区", text)
+        self.assertIn("直接拒绝", text)
+        self.assertIn("worktree-protocol.md", text)
+
+
 if __name__ == "__main__":
     unittest.main()

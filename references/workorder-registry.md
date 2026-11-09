@@ -50,3 +50,4 @@ active   -> abandoned
 3. Registry 校验失败时 fail-closed，不得继续实现或合并。
 4. 外部工单系统 ID 只写入 `external_id`，不替代本地稳定 ID。
 5. Registry 只证明编号与占位关系，不证明代码质量或验收通过。
+6. **发号器绑定目标 worktree**：发号必须从目标 worktree 根运行，或以 `--repo`/等价参数显式指定目标仓库目录；目标为受保护的共享工作区（见 [worktree-protocol.md](worktree-protocol.md) 第 2 节）时直接拒绝。任何 git 操作前，registry 必须能定位该 worktree 登记的 WO 与目标分支。
