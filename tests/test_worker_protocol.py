@@ -67,5 +67,22 @@ class WorkerProtocolTests(unittest.TestCase):
         self.assertIn("收口证据", text)
 
 
+
+    def test_briefing_five_items_and_reverse_constraints(self):
+        text = (ROOT / "references/worker-protocol.md").read_text(encoding="utf-8")
+        for needle in (
+            "派活五件套",
+            "目标",
+            "文件坐标",
+            "验收命令",
+            "红线",
+            "不要做什么",
+            "不许写「自行查阅」",
+            "问分发方一次",
+            "不自探超过 5 个工具调用",
+            "回报分发方更正坐标",
+        ):
+            self.assertIn(needle, text)
+
 if __name__ == "__main__":
     unittest.main()

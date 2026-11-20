@@ -68,5 +68,21 @@ class ReadmeValuePropositionTests(unittest.TestCase):
         self.assertIn("allow_implicit_invocation: false", metadata)
 
 
+
+    def test_six_new_rule_groups_in_readme(self):
+        text = (ROOT / "README.md").read_text(encoding="utf-8")
+        for needle in (
+            "长任务不占主会话",
+            "派活带坐标",
+            "状态闭集单一事实源",
+            "缺陷四档到底",
+            "规则变更走五步",
+            "模型调用过双门",
+            "整个项目的调度跟着停摆",
+            "开发完成禁说已修复",
+            "新标记上线全量零命中",
+        ):
+            self.assertIn(needle, text)
+
 if __name__ == "__main__":
     unittest.main()

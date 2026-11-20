@@ -14,15 +14,15 @@ description: Explicit-only repository governance for Codex and Claude. Invoke $r
 3. 仓库已有开发约束时，读取 [diagnose.md](references/diagnose.md)，输出诊断报告并等待用户确认；不得直接覆盖或合并现有规则。
 4. 仓库没有显式约束且用户要求初始化治理时，读取 [bootstrap.md](references/bootstrap.md)。空仓库或新项目在轻量盘点后直接创建 L1；无约束的已有仓库先做轻量盘点，再只创建 L1 文件。
 5. 保留仓库专属约定。除安全底线外，冲突默认按目标仓库显式规则裁决。
-6. 涉及配置、模块边界、依赖方向、外部调用、状态机、屎山入口或兼容层时，读取 [code-governance.md](references/code-governance.md)。
-7. 涉及 WO 执行体、开发子任务、worker 可见性、fallback 或执行收口时，读取 [collaboration-governance.md](references/collaboration-governance.md)；目标仓库显式政策优先，无政策时主会话串行。
+6. 涉及配置、模块边界、依赖方向、外部调用、状态机、状态闭集、屎山入口或兼容层时，读取 [code-governance.md](references/code-governance.md)。
+7. 涉及 WO 执行体、开发子任务、worker 可见性、fallback、执行收口、主会话铁律、长任务外派、两级派活或用户反馈缺陷闭环时，读取 [collaboration-governance.md](references/collaboration-governance.md)；目标仓库显式政策优先，无政策时主会话串行，长任务仍必须外派。
 8. 需要重大决策圆桌、根因圆桌或交叉评审时，读取 [roundtable-protocol.md](references/roundtable-protocol.md)；Round 1 独立评审和 Round 2 交叉互评必做，结束后归档可见分析会话。
 9. L1 初始化后如需发号，使用 [workorder-registry.md](references/workorder-registry.md) 和 bundled CLI；主会话统一发号，worker 不得改 registry。
-10. 用户明确要求多 worker 并行时，先读取 [worker-protocol.md](references/worker-protocol.md)；L2 默认关闭，范围重叠任务必须串行。
+10. 用户明确要求多 worker 并行时，先读取 [worker-protocol.md](references/worker-protocol.md)；L2 默认关闭，范围重叠任务必须串行。任何派工都必须按派活五件套生成分发 brief。
 11. 用户明确要求多 worktree 或长期分支治理时，读取 [worktree-protocol.md](references/worktree-protocol.md) 和 [merge-protocol.md](references/merge-protocol.md)；L3 默认关闭，合并前必须 fail-closed 检查。
 12. 用户明确要求文档事实源、发布证据链或长期文档治理时，读取 [document-governance.md](references/document-governance.md)；L4 默认关闭，不自动创建 Heavy 门禁。
-13. 涉及验收等级、分级验收、行为漂移或关键路径验收时，读取 [acceptance-governance.md](references/acceptance-governance.md)；验收等级 L0/L1/L2 与能力分层 L1-L4 不得混用。
-14. 涉及详设影响、design-delta、服务接口地图或设计章节变更时，读取 [design-governance.md](references/design-governance.md)。
+13. 涉及验收等级、分级验收、行为漂移、关键路径验收或判定规则（语义/口径/枚举/状态/授权门）变更时，读取 [acceptance-governance.md](references/acceptance-governance.md)；验收等级 L0/L1/L2 与能力分层 L1-L4 不得混用，规则变更走五步制。
+14. 涉及详设影响、design-delta、服务接口地图、设计章节变更或模型调用环节（prompt/通道/参数/新模型）时，读取 [design-governance.md](references/design-governance.md)；模型调用工单缺双评估门结论视同方案不齐。
 15. 涉及数据、证据、输入语料、预期结果或运行产物时，读取 [evidence-governance.md](references/evidence-governance.md)；预期结果只用于验收对照。
 
 ## 硬边界

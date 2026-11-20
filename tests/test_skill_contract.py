@@ -47,7 +47,7 @@ class SkillContractTests(unittest.TestCase):
         text = (ROOT / "SKILL.md").read_text(encoding="utf-8")
         for needle in (
             "acceptance-governance.md",
-            "验收等级、分级验收、行为漂移或关键路径验收",
+            "验收等级、分级验收、行为漂移、关键路径验收或判定规则",
             "design-governance.md",
             "详设影响、design-delta、服务接口地图",
             "evidence-governance.md",

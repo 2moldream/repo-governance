@@ -60,5 +60,20 @@ class AcceptanceGovernanceTests(unittest.TestCase):
         self.assertIn("验收等级声明（默认 L1）", bootstrap)
 
 
+
+    def test_rule_change_five_step_process(self):
+        text = (ROOT / "references/acceptance-governance.md").read_text(encoding="utf-8")
+        for needle in (
+            "规则变更五步制",
+            "决议入账",
+            "影响链路盘点",
+            "双层面同步",
+            "改前改后差分",
+            "实测命中证明",
+            "封板前验证",
+            "新规则未经实测验证",
+        ):
+            self.assertIn(needle, text)
+
 if __name__ == "__main__":
     unittest.main()
