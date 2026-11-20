@@ -149,5 +149,37 @@ class CollaborationGovernanceTests(unittest.TestCase):
         self.assertIn("收口证据", workorder)
 
 
+class IronRulesAndDefectLoopTests(unittest.TestCase):
+    def test_iron_rules_cover_long_task_and_two_tier_dispatch(self):
+        text = (ROOT / "references/collaboration-governance.md").read_text(encoding="utf-8")
+        for needle in (
+            "主会话铁律",
+            "禁止执行长任务",
+            "全量回归",
+            "预计超 5 分钟",
+            "两级派活",
+            "禁止三级嵌套",
+            "保持可接收调度",
+            "死线窗口只走关键路径",
+            "拿不准就问治理角色",
+        ):
+            self.assertIn(needle, text)
+
+    def test_defect_loop_four_states_with_user_only_exit(self):
+        text = (ROOT / "references/collaboration-governance.md").read_text(encoding="utf-8")
+        for needle in (
+            "缺陷闭环",
+            "待验证 / 已处置",
+            "复现验证通过才立缺陷行",
+            "待修复 → 开发完成 → 测试通过 → 已关闭",
+            "换档必带证据",
+            "复测强制卡点",
+            "已关闭唯一出口=用户本人验收",
+            "不随关联 WO",
+            "禁说「已修复」",
+        ):
+            self.assertIn(needle, text)
+
+
 if __name__ == "__main__":
     unittest.main()

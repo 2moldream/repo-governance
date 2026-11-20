@@ -61,5 +61,19 @@ class DesignGovernanceTests(unittest.TestCase):
         self.assertIn("证据清单：{{evidence_manifest}}", workorder)
 
 
+
+    def test_model_call_dual_evaluation_gates(self):
+        text = (ROOT / "references/design-governance.md").read_text(encoding="utf-8")
+        for needle in (
+            "模型调用双评估门",
+            "性能评估门",
+            "提示词评估门",
+            "多案对比确定最优后才能上线",
+            "只出方案，不开发代码",
+            "视同方案不齐",
+            "不派工、不合入",
+        ):
+            self.assertIn(needle, text)
+
 if __name__ == "__main__":
     unittest.main()

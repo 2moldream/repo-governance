@@ -122,5 +122,20 @@ class CodeGovernanceTests(unittest.TestCase):
         self.assertEqual((ROOT / "VERSION").read_text(encoding="utf-8").strip(), "0.5.0")
 
 
+
+    def test_closed_set_single_source_of_truth(self):
+        text = (ROOT / "references/code-governance.md").read_text(encoding="utf-8")
+        for needle in (
+            "状态闭集与唯一事实源",
+            "只许 import 引用",
+            "禁止再定义同名或同义字面量",
+            "先改事实源",
+            "加状态演练",
+            "全链自动跟随",
+            "差集断言",
+            "第二个兜底字面量即红",
+        ):
+            self.assertIn(needle, text)
+
 if __name__ == "__main__":
     unittest.main()
